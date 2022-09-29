@@ -20,7 +20,7 @@
 |:----------            | ------------------------: |
 | Web                   | React + Vite FrontEnd     |
 | Prisma                | Prisma Migrations         |
-| API                   | Express REST Api          |
+| API                   | PHP REST Api              |
 
 ---
 
