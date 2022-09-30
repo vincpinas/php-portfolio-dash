@@ -9,10 +9,9 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
 // Classes
 require __DIR__ . '/../database.php';
 
-function msg($success, $status, $message, $type, $extra = [])
+function msg($status, $message, $type, $extra = [])
 {
   return array_merge([
-    'success' => $success,
     'status' => $status,
     'message' => $message,
     'type' => $type
@@ -25,7 +24,7 @@ $conn = $db_connection->__dbConnection();
 $returnData = [];
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-  $returnData = msg(0, 404, 'This endpoint requires a post request method.', 'Error');
+  $returnData = msg(404, 'This endpoint requires a post request method.', 'Error');
 } else {
   if (isset(
     $_POST['title'],
@@ -66,12 +65,12 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
       $insert_stmt->execute();
 
-      $returnData = msg(1, 201, 'Successfully created record', 'Success');
+      $returnData = msg(201, 'Successfully created record', 'Success');
     } catch (PDOException $e) {
-      $returnData = msg(0, 500, $e->getMessage(), 'Error');
+      $returnData = msg(500, $e->getMessage(), 'Error');
     }
   } else {
-    $returnData = msg(0, 404, 'There are one or multiple variables missing.', 'Error');
+    $returnData = msg(404, 'There are one or multiple variables missing.', 'Error');
   }
 }
 
