@@ -30,7 +30,7 @@ try {
     $sth = $conn->prepare($query);
     $sth->execute();
 
-    $returnData = $sth->fetchAll();
+    $returnData = $sth->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $returnData = msg(0, 500, $e->getMessage(), 'Error');
 }
