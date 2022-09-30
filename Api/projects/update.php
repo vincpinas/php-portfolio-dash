@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
       'learned' => trim($_POST['learned']),
       'links' => trim($_POST['links']),
       'skills' => trim($_POST['skills']),
+      'updated_at' => date("Y/m/d h:i:s"),
     ];
 
     try {

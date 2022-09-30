@@ -44,8 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     $learned = trim($_POST['learned']);
     $links = trim($_POST['links']);
     $skills = trim($_POST['skills']);
-    $created_at = date("Y/m/d");
-    $updated_at = date("Y/m/d");
+    $created_at = date("Y/m/d h:i:s");
+    $updated_at = date("Y/m/d h:i:s");
 
     try {
       $insert_query = "INSERT INTO `projects` (`title`,`introduction`,`status`,`img_src`,`description`,`learned`,`links`,`skills`,`created_at`,`updated_at`) 
