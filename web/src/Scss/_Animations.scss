@@ -1,0 +1,200 @@
+@mixin drop-in-ani($delay: 0s) {
+  @keyframes drop-in {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  opacity: 0;
+  animation: drop-in 1s $delay forwards;
+}
+
+@mixin slide-out-ani($delay: 0s) {
+  @keyframes slide-out {
+    from {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  opacity: 0;
+  animation: slide-out 1s $delay forwards;
+}
+
+@mixin slide-in-ani($delay: 0s, $side) {
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  opacity: 0;
+  animation: slide-in-right 0.6s $delay forwards;
+
+  @if ($side == "left") {
+    animation: slide-in-left 0.6s $delay forwards;
+  } @else if ($side == "right") {
+    animation: slide-in-right 0.6s $delay forwards;
+  }
+}
+
+@keyframes rubber-band{
+  0%{ transform: scale3d(1,1,1); }
+  35%{ transform: scale3d(1.25,.75,1); }
+  45%{ transform: scale3d(.75,1,1); }
+  60%{ transform: scale3d(1.2,.8,1); }
+  75%{ transform: scale3d(1.05,.95,1); }
+  100%{ transform: scale3d(1,1,1);  }
+}
+
+@mixin hover-ani($start: 0px, $end, $timing: ease-in-out) {
+  @keyframes hover-ani {
+    from { transform: translateY($start) }
+    to { transform: translateY($end) }
+  }
+
+  animation: hover-ani 1.5s $timing infinite alternate-reverse;
+}
+
+@mixin drop-in-animation($delay) {
+  @keyframes drop-in {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  z-index: 1;
+  opacity: 0;
+  animation: drop-in 1s $delay forwards;
+}
+
+@keyframes rubber-band{
+  0%{ transform: scale3d(1,1,1); }
+  35%{ transform: scale3d(1.25,.75,1); }
+  45%{ transform: scale3d(.75,1,1); }
+  60%{ transform: scale3d(1.2,.8,1); }
+  75%{ transform: scale3d(1.05,.95,1); }
+  100%{ transform: scale3d(1,1,1);  }
+}
+
+@keyframes hover-info-ani {
+  0% { transform: translateY(0px); opacity: 0; }
+
+  10% { transform: translateY(-10px); opacity: 1; }
+
+  40% { transform: translateY(-10px); opacity: 1; }
+
+  50% {  transform: translateY(-10px); opacity: 1; }
+
+  60% { transform: translateY(0px); opacity: 0; }
+
+  100% { transform: translateY(0px); opacity: 0; }
+}
+
+@keyframes hover-cardspec {
+  from { transform: translateY(-10px) translateX(-10px); }
+  to { transform: translateY(-15px) translateX(-15px); }
+}
+
+@mixin slide-in-left-ani($delay) {
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  opacity: 0;
+  animation: slide-in-right 0.6s $delay forwards;
+}
+
+@mixin customRadioAni($width) {
+  @keyframes customRadioAnimation {
+    0% {
+      transform: scale(0);
+    }
+
+    70% {
+      transform: scale(2.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  z-index: 1;
+  animation: customRadioAnimation 400ms forwards;
+}
+
+@keyframes big-letter-animation-1 {
+  0% {
+      transform: translateY(-11px) rotateX(-20deg) rotateY(-23deg) rotateZ(-20deg);
+  }
+
+  50% {
+      transform: translateY(0px) rotateX(-20deg) rotateY(-23deg) rotateZ(-20deg);
+  }
+
+  100% {
+      transform: translateY(-11px) rotateX(-20deg) rotateY(-23deg) rotateZ(-20deg);
+  }
+}
+
+@keyframes big-letter-animation-2 {
+  0% {
+      transform: translateY(0px) rotateX(-20deg) rotateY(-23deg) rotateZ(20deg);
+  }
+
+  50% {
+      transform: translateY(-11px) rotateX(-20deg) rotateY(-23deg) rotateZ(20deg);
+  }
+
+  100% {
+      transform: translateY(0px) rotateX(-20deg) rotateY(-23deg) rotateZ(20deg);
+  }
+}
+
+@keyframes circle-expand {
+  from {
+    scale: 1;
+    opacity: 100%;
+  }
+  to {
+    scale: 1.2;
+    opacity: 0%;
+  }
+}

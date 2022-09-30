@@ -1,0 +1,139 @@
+@import './Variables';
+@import './Animations';
+
+@mixin font--primary($weight: 300, $style: normal) {
+  font-family: $font--primary;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin font-size($size) {
+  font-size: #{$size}px;
+}
+
+@mixin button {
+  @include font--primary(800);
+  outline: 0;
+  border: 2px solid $special-primary;
+  color: $special-primary;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: $font-size--button;
+  border-radius: $border-radius--primary;
+  background: var(--background);
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+@mixin button-hovered {
+  @include button;
+  transition: all $transition-slow;
+
+  &:hover {
+    background-color: rgba($special-primary, 0.9);
+    color: var(--background);
+  }
+}
+
+@mixin h1 {
+  @include font-size($font-size--h1);
+  @include font--primary(800);
+  line-height: #{$line-height--h1}px;
+  margin-bottom: 1.5rem;
+
+  @media #{$tablet-down} {
+    @include font-size($s-font-size--h1);
+    line-height: #{$s-line-height--h1}px;
+  }
+}
+
+@mixin h2 {
+  @include font-size($font-size--h2);
+  @include font--primary(800);
+  line-height: #{$line-height--h2}px;
+  margin-bottom: 1.5rem;
+
+  @media #{$tablet-down} {
+    @include font-size($s-font-size--h2);
+    line-height: #{$s-line-height--h2}px;
+  }
+}
+
+@mixin h3 {
+  @include font-size($font-size--h3);
+  @include font--primary(700);
+  line-height: #{$line-height--h3}px;
+  margin-bottom: 1.5rem;
+
+  @media #{$tablet-down} {
+    @include font-size($s-font-size--h3);
+    line-height: #{$s-line-height--h3}px;
+  }
+}
+
+@mixin h4 {
+  @include font-size($font-size--h4);
+  @include font--primary();
+  line-height: #{$line-height--h4}px;
+  margin-bottom: 1.5rem;
+
+  @media #{$tablet-down} {
+    @include font-size($s-font-size--h4);
+    line-height: #{$s-line-height--h4}px;
+  }
+}
+
+@mixin h5 {
+  @include font-size($font-size--h5);
+  @include font--primary();
+  line-height: #{$line-height--h5}px;
+  margin-bottom: 1.5rem;
+
+  @media #{$tablet-down} {
+    @include font-size($s-font-size--h5);
+    line-height: #{$s-line-height--h5}px;
+  }
+}
+
+@mixin paragraph {
+  @include font-size($font-size--paragraph);
+  @include font--primary();
+  line-height: #{$line-height--paragraph}px;
+  margin-bottom: 1rem;
+
+  @media #{$tablet-down} {
+    @include font-size($s-font-size--paragraph);
+    line-height: #{$s-line-height--paragraph}px;
+  }
+}
+
+@mixin input {
+  @include font-size($font-size--input);
+  line-height: #{$line-height--input}px;
+  margin-bottom: 1rem;
+
+  @media #{$tablet-down} {
+    @include font-size($s-font-size--input);
+    line-height: #{$s-line-height--input}px;
+  }
+}
+
+@mixin label {
+  @include font-size($font-size--label);
+  line-height: #{$line-height--label}px;
+  margin-bottom: 1rem;
+
+  @media #{$tablet-down} {
+    @include font-size($s-font-size--label);
+    line-height: #{$s-line-height--label}px;
+  }
+}
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
