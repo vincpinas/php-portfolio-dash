@@ -25,7 +25,7 @@ $conn = $db_connection->__dbConnection();
 $returnData = [];
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-  $returnData = msg(0, 404, 'This endpoint requires a post request.', 'Error');
+  $returnData = msg(0, 404, 'This endpoint requires a post request method.', 'Error');
 } else {
   if (isset($_GET['id'])) {
     $data = [
@@ -57,8 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
       }
 
       if ($conditions != '') $update_query = $updatePrefix . $conditions . $updateSuffix;
-
-      echo json_encode($conditions);
 
       $update_stmt = $conn->prepare($update_query);
       $update_stmt->execute();
