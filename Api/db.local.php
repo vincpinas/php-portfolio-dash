@@ -16,4 +16,3 @@
         print "<p style='font-size:2em;'>Failed to connect to MySQL: " . mysqli_connect_error() . "</p>";
         exit;
     }
-?>

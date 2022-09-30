@@ -37,4 +37,3 @@ class Database extends Env {
         }     
     }
 }
-?>

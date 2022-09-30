@@ -1,15 +1,38 @@
-<?php 
-    if (strpos($_SERVER['HTTP_HOST'], "ma-cloud.nl")) {
-        include('db.live.php');
-    } else {
-        include('db.local.php');
-    }
-    include('helpers.php');
-?>
-
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: access");
-    header("Access-Control-Allow-Methods: POST");
-    header("Content-Type: application/json; charset=UTF-8");
-    header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+header("Content-Type:application/json");
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Credentials: true");
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+header('Access-Control-Max-Age: 1000');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+
+// Classes
+require __DIR__ . '/../database.php';
+
+function msg($success, $status, $message, $type, $extra = [])
+{
+    return array_merge([
+        'success' => $success,
+        'status' => $status,
+        'message' => $message,
+        'type' => $type
+    ], $extra);
+}
+
+$db_connection = new Database();
+$conn = $db_connection->__dbConnection();
+
+$returnData = [];
+
+try {
+    $query = "SELECT * FROM projects";
+
+    $sth = $conn->prepare($query);
+    $sth->execute();
+
+    $returnData = $sth->fetchAll();
+} catch (PDOException $e) {
+    $returnData = msg(0, 500, $e->getMessage(), 'Error');
+}
+
+echo json_encode($returnData);
