@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2022 at 01:31 PM
+-- Generation Time: Oct 01, 2022 at 01:06 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -25,6 +25,20 @@ SET FOREIGN_KEY_CHECKS = 1;
 --
 -- Database: `port.dash`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `media`
+--
+
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -54,9 +68,9 @@ CREATE TABLE `projects` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(11) NOT NULL,
-  `email` varchar(11) NOT NULL,
-  `password` varchar(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `start_career` date NOT NULL DEFAULT current_timestamp(),
@@ -78,7 +92,8 @@ ALTER TABLE `projects`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
