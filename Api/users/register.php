@@ -40,17 +40,14 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
         $returnData = msg(422, "Invalid Email Address!: " . $email, 'Warning');
     } else if (strlen($password) < 8) {
         $returnData = msg(423, 'Your password must be at least 8 characters long!', 'Warning');
-    } else if (strlen($name) < 3) {
-        $returnData = msg(424, 'Your name must be at least 3 characters long!', 'Warning');
     } else {
         try {
-            $check_email = "SELECT `email` FROM `users` WHERE `email`=:email";
-            $check_email_stmt = $conn->prepare($check_email);
-            $check_email_stmt->bindValue(':email', $email, PDO::PARAM_STR);
-            $check_email_stmt->execute();
+            $check_count = "SELECT * FROM `users`";
+            $check_count_stmt = $conn->prepare($check_count);
+            $check_count_stmt->execute();
 
-            if ($check_email_stmt->rowCount()) {
-                $returnData = msg(425, 'This E-mail is already in use!', 'Error');
+            if ($check_count_stmt->rowCount()) {
+                $returnData = msg(425, 'Looks like there already is an existing account, please try logging in instead.', 'Error');
             } else {
                 $insert_query = "INSERT INTO `users`
                 (`name`, `email`, `password`, `phone`, `address`, `start_career`, `completed_projects`, `satisfied_customers`) 
