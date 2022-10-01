@@ -9,10 +9,9 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
 // Classes
 require __DIR__ . '/database.php';
 
-function msg($success, $status, $message, $type, $extra = [])
+function msg($status, $message, $type, $extra = [])
 {
     return array_merge([
-        'success' => $success,
         'status' => $status,
         'message' => $message,
         'type' => $type
@@ -31,16 +30,16 @@ try {
     $sth->execute();
 
     if($sth->rowCount() > 0) {
-      $returnData = msg(0, 200, "Successfully got '". $sth->rowCount() ."' table(s)", 'Success');
+      $returnData = msg(200, "Successfully got '". $sth->rowCount() ."' table(s)", 'Success');
     } else {
-      $returnData = msg(0, 404, "Unable to find table(s), importing fresh tables..", 'Error');
+      $returnData = msg(404, "Unable to find table(s), importing fresh tables..", 'Error');
 
       $sql = file_get_contents('port_dash.sql');
       $sth = $conn->prepare($sql);
       $sth->execute();
     }
 } catch (PDOException $e) {
-    $returnData = msg(0, 500, $e->getMessage(), 'Error');
+    $returnData = msg(500, $e->getMessage(), 'Error');
 }
 
 echo json_encode($returnData);
