@@ -25,12 +25,16 @@ $returnData = [];
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     $returnData = msg(404, 'This endpoint requires a post request method.', 'Error');
+} else if (!isset($_POST['email'])) {
+    $returnData = msg(404, 'This endpoint requires an email field to work', 'Error');
+} else if (!isset($_POST['password'])) {
+    $returnData = msg(404, 'This endpoint requires an password field to work', 'Error');
 } else {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $returnData = msg(422, "Invalid Email Address!: ".$email, 'Error');
+        $returnData = msg(422, "Invalid Email Address!: " . $email, 'Error');
     } elseif (strlen($password) < 8) {
         $returnData = msg(422, 'Your password must be at least 8 characters long!', 'Warning');
     }
@@ -56,10 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                         'user' => $row,
                     ];
                 } else {
-                    $returnData = msg(422, "Invalid Password!: ".$password, 'Warning');
+                    $returnData = msg(422, "Invalid Password!: " . $password, 'Warning');
                 }
             } else {
-                $returnData = msg(422, "Could not find record with email: ".$email, 'Error');
+                $returnData = msg(422, "Could not find record with email: " . $email, 'Error');
             }
         } catch (PDOException $e) {
             $returnData = msg(500, $e->getMessage(), 'Error');
