@@ -1,0 +1,171 @@
+@import '../../Scss/Variables';
+@import '../../Scss/Mixins';
+
+
+#loginContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+
+  .loginHeading {
+    color: $text-secondary;
+    font-weight: 500;
+    margin-bottom: 5rem;
+  }
+
+  #loginFormWrapper {
+    display: flex;
+    background-color: $background-secondary;
+    border-radius: $border-radius--secondary;
+    box-shadow: $box-shadow--secondary;
+
+    @media #{$tablet-down} {
+      flex-direction: column;
+      max-width: 100%;
+    }
+
+    #loginForm {
+      background-color: $background;
+      border-radius: inherit;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      @include font--primary(700);
+
+
+      @media #{$tablet-down} {
+        flex-direction: column;
+        max-width: 100%;
+      }
+
+      .iF-label {
+        color: $special-primary;
+      }
+
+      .iFe-label {
+        color: $label-highlight;
+      }
+
+      .iFerr-label {
+        color: $color-red;
+      }
+
+      label {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        color: var(--text-hover);
+        @include label;
+
+        @for $i from 1 through 5 {
+          &:nth-child(#{$i}) {
+            @include drop-in-animation(0.5 + $i * 0.1s);
+          }
+        }
+
+        &:first-child {
+          margin-right: 6.5rem;
+        }
+
+
+        input {
+          background: none;
+          margin-top: 0.5rem;
+          border: none;
+          border-bottom: 2px solid $text-label-dark;
+          color: $text-primary;
+          @include input;
+          padding: 3px;
+          outline: none;
+          caret-color: var(--text-hover);
+
+          &:focus {
+            border-bottom: 2px solid $special-primary;
+          }
+        }
+
+        .iFerr-input {
+          border-bottom: 2px solid $color-red  !important;
+
+          &::placeholder {
+            color: $color-red;
+          }
+
+          &:focus {
+            border-bottom: 2px solid $color-red  !important;
+          }
+        }
+      }
+    }
+
+    div {
+      text-align: left;
+      width: 100%;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+
+      h4 {
+        font-weight: 700;
+        margin-bottom: 0;
+        @include drop-in-animation(0.65 + 0.1s);
+      }
+
+      .customRadioContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        @for $i from 1 through 5 {
+          span:nth-child(#{$i}) {
+            @include drop-in-animation(0.75 + $i * 0.1s);
+          }
+        }
+      }
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.4rem 1.8rem;
+      width: fit-content;
+      background: $special-primary;
+      border: 2px solid darken($special-primary, 10%);
+      transition: all 500ms;
+      color: $color-white;
+      box-shadow: $box-shadow--secondary;
+      font-weight: 500;
+      border-radius: $border-radius--primary;
+
+      &.error {
+        background: $color-red;
+        border: 2px solid darken($color-red, 10%);
+      }
+
+      &.succces {
+        background: $color-green;
+        border: 2px solid darken($color-green, 10%);
+      }
+
+      span {
+        display: flex
+      }
+
+      svg {
+        @include font--primary(800);
+        font-size: 1.8em;
+      }
+    }
+
+    #messageRow {
+      label {
+        @include drop-in-animation(0.9 + 0.1s);
+        margin: 0 0 1rem 0;
+      }
+    }
+  }
+}

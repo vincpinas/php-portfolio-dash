@@ -1,6 +1,6 @@
-@import 'Variables.scss';
-@import 'Mixins.scss';
-@import 'Animations.scss';
+@import './_Variables.scss';
+@import './_Mixins.scss';
+@import './_Animations.scss';
 
 /* Any imports required multiple times across the site will be imported here. */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap');
@@ -62,7 +62,7 @@ table {
 
 #root {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 
@@ -73,7 +73,7 @@ html,
     width: 100%;
     background-color: $background;
 
-    .appWrapper {
+    #appWrapper {
         height: 100%;
         width: 100%;
         display: flex;

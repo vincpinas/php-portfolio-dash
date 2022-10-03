@@ -1,0 +1,23 @@
+@import '../../Scss/Variables';
+@import '../../Scss/Mixins';
+
+#loadComponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  .character {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1rem;
+
+    .spritesheet {
+      image-rendering: pixelated;
+      position: absolute;
+    }
+  }
+}
