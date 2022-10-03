@@ -36,7 +36,6 @@
       flex-direction: column;
       @include font--primary(700);
 
-
       @media #{$tablet-down} {
         flex-direction: column;
         max-width: 100%;
@@ -59,7 +58,7 @@
         display: flex;
         flex-direction: column;
         text-align: left;
-        color: var(--text-hover);
+        color: $text-hover;
         @include label;
 
         @for $i from 1 through 5 {
@@ -82,7 +81,7 @@
           @include input;
           padding: 3px;
           outline: none;
-          caret-color: var(--text-hover);
+          caret-color: $text-hover;
 
           &:focus {
             border-bottom: 2px solid $special-primary;

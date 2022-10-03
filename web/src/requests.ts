@@ -10,6 +10,7 @@ export const userExists = async () => {
   return response.data;
 };
 
+// Login request and consumer.
 export const login = async (rData: URLSearchParams) => {
   const { data } = await axios.post(`${URL}/users/login.php`, rData);
   return data;
@@ -18,14 +19,11 @@ export const useLoginData = (onSucces?: Function) => {
   return useMutation(login);
 }
 
+// Register request and consumer.
 export const register = async (rData: URLSearchParams) => {
   const { data } = await axios.post(`${URL}/users/register.php`, rData);
   return data;
 }
 export const useRegisterData = () => {
-  return useMutation(register, {
-    onSuccess: (data: any) => {
-      console.log(data);
-    },
-  });
+  return useMutation(register);
 }

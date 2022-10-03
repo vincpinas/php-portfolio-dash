@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { MdOutlineScheduleSend, MdOutlineCancelScheduleSend, MdOutlineSend, MdCheck } from 'react-icons/md';
+import { MdOutlineScheduleSend, MdOutlineSend } from 'react-icons/md';
+import Cookies from 'cookies-js';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useLoginData } from '../../requests';
@@ -17,6 +18,7 @@ function Login({ setUser, setIsLoggedIn }: loginProps) {
     if(isSuccess && data.user) {
       setUser(data.user);
       setIsLoggedIn(true);
+      Cookies.set('user_email', data.user.email);
     }
   }, [isSuccess]);
 
@@ -37,7 +39,7 @@ function Login({ setUser, setIsLoggedIn }: loginProps) {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      email: Cookies.get('user_email'),
       password: '',
     },
     validationSchema: Yup.object().shape({
@@ -60,7 +62,7 @@ function Login({ setUser, setIsLoggedIn }: loginProps) {
       <div id='loginFormWrapper'>
         <form id='loginForm' onSubmit={formik.handleSubmit}>
           <label htmlFor='email' className={formik.errors.email ? 'iFerr-label' : ''}>
-            Email
+            Email*
             <input
               className={formik.errors.email ? 'iFerr-input' : ''}
               type='text' onFocus={lAF} onChange={lOC} onBlur={lAB}
@@ -70,7 +72,7 @@ function Login({ setUser, setIsLoggedIn }: loginProps) {
             {formik.errors.email && <span className='errorMessage'>{formik.errors.email}</span>}
           </label>
           <label htmlFor='password' className={formik.errors.password ? 'iFerr-label' : ''}>
-            Password
+            Password*
             <input
               className={formik.errors.password ? 'iFerr-input' : ''}
               type='password' onFocus={lAF} onChange={lOC} onBlur={lAB}
