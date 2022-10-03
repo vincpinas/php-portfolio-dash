@@ -18,6 +18,8 @@ function msg($status, $message, $type, $extra = [])
   ], $extra);
 }
 
+error_reporting(E_ALL & ~E_NOTICE);
+
 $db_connection = new Database();
 $conn = $db_connection->__dbConnection();
 
@@ -36,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
       'learned' => trim($_POST['learned']),
       'links' => trim($_POST['links']),
       'skills' => trim($_POST['skills']),
+      'categories' => trim($_POST['categories']),
       'updated_at' => date("Y/m/d h:i:s"),
     ];
 
