@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2022 at 01:06 AM
+-- Generation Time: Oct 03, 2022 at 10:56 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -15,7 +15,6 @@ SET FOREIGN_KEY_CHECKS = 0;
 drop table if exists projects;
 drop table if exists users;
 SET FOREIGN_KEY_CHECKS = 1;
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -56,6 +55,7 @@ CREATE TABLE `projects` (
   `learned` varchar(500) NOT NULL,
   `links` varchar(255) NOT NULL,
   `skills` varchar(255) NOT NULL,
+  `categories` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
