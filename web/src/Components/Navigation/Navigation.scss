@@ -1,0 +1,43 @@
+@import '../../Scss/Variables';
+@import '../../Scss/Mixins';
+
+#navigationComponent {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: $box-shadow--secondary;
+
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    @media #{$tablet-down} {
+      flex-direction: row;
+    }
+
+    li {
+      font-size: 1.5em;
+      margin: 1rem 0.5rem;
+
+      @media #{$tablet-down} {
+        margin: 0.5rem 1rem;
+      }
+
+      a {
+        transition: $transition-fast;
+        text-decoration: none;
+        color: $text-primary;
+
+        &.active {
+          color: $special-primary;
+        }
+
+        &:hover {
+          color: $special-primary;
+        }
+      }
+    }
+  }
+}

@@ -81,6 +81,10 @@ html,
         background-color: $background;
         color: $text-primary;
 
+        @media #{$tablet-down} {
+            flex-direction: column;
+        }
+
         a,
         button,
         input[type="submit"] {
