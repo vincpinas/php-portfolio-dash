@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MdOutlineScheduleSend, MdOutlineSend } from 'react-icons/md';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRegisterData } from '../../requests';
+import { useRegister } from '../../requests';
 import './Register.scss';
 
 interface RegProps {
@@ -10,7 +10,7 @@ interface RegProps {
 }
 
 function Register({ refetch }: RegProps) {
-  const { mutate: reqReg, isLoading } = useRegisterData();
+  const { mutate: reqReg, isLoading } = useRegister();
 
   const lAF = (e: any) => {
     const parent = e.target.parentElement;

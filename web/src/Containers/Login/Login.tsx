@@ -4,7 +4,7 @@ import { User } from '../../requests';
 import Cookies from 'cookies-js';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useLoginData } from '../../requests';
+import { useLogin } from '../../requests';
 import './Login.scss';
 
 
@@ -14,7 +14,7 @@ interface loginProps {
 }
 
 function Login({ setUser, setIsLoggedIn }: loginProps) {
-  const { mutate: reqLogin, isLoading, isSuccess, data } = useLoginData();
+  const { mutate: reqLogin, isLoading, isSuccess, data } = useLogin();
 
   useEffect(() => {
     if(isSuccess && data.user) {

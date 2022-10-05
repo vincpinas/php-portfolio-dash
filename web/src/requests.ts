@@ -31,7 +31,7 @@ export const login = async (rData: URLSearchParams) => {
   const { data } = await axios.post(`${URL}/users/login.php`, rData);
   return data;
 }
-export const useLoginData = (onSucces?: Function) => {
+export const useLogin = (onSucces?: Function) => {
   return useMutation(login);
 }
 
@@ -40,6 +40,15 @@ export const register = async (rData: URLSearchParams) => {
   const { data } = await axios.post(`${URL}/users/register.php`, rData);
   return data;
 }
-export const useRegisterData = () => {
+export const useRegister = () => {
   return useMutation(register);
+}
+
+export const createProject = async (rData: URLSearchParams) => {
+  const { data } = await axios.post(`${URL}/projects/create.php`, rData);
+  return data;
+}
+
+export const useCreateProject = () => {
+  return useMutation(createProject);
 }
