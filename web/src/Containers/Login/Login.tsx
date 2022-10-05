@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, Dispatch } from 'react';
 import { MdOutlineScheduleSend, MdOutlineSend } from 'react-icons/md';
 import Cookies from 'cookies-js';
 import { useFormik } from 'formik';
@@ -6,9 +6,20 @@ import * as Yup from 'yup';
 import { useLoginData } from '../../requests';
 import './Login.scss';
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  start_career: string;
+  completed_projects: number;
+  satisfied_customers: number;
+}
+
 interface loginProps {
-  setUser: any;
-  setIsLoggedIn: any;
+  setUser: Dispatch<React.SetStateAction<User>>;
+  setIsLoggedIn: Dispatch<React.SetStateAction<boolean>>;
 }
 
 function Login({ setUser, setIsLoggedIn }: loginProps) {

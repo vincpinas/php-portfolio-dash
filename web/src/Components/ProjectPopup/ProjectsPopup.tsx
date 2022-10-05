@@ -3,7 +3,7 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import './ProjectsPopup.scss';
 
 interface popupProps {
-  setPopupActive: any;
+  setPopupActive: Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ProjectsPopup({ setPopupActive }: popupProps) {
