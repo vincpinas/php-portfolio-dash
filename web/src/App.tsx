@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from 'react'
 import './Scss/App.scss'
 import { useQuery } from 'react-query';
-import { initReq, userExists } from './requests';
+import { initReq, userExists, User } from './requests';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import LoadingScreen from './Components/LoadingScreen/LoadingScreen';
 import Navigation from './Components/Navigation/Navigation';
@@ -11,7 +11,7 @@ import Projects from './Containers/Projects/Projects';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | {}>({});
   useEffect(() => { initReq(); }, [isLoggedIn, user]);
   const { data, status, refetch } = useQuery('userExists', userExists, {staleTime: Infinity});
   const navigate = useNavigate();

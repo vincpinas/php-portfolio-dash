@@ -15,7 +15,18 @@ export const fetchProjects = async () => {
   return response.data;
 };
 
-// Login request and consumer.
+// Login request and consumer and user interface.
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  start_career: string;
+  completed_projects: number;
+  satisfied_customers: number;
+}
+
 export const login = async (rData: URLSearchParams) => {
   const { data } = await axios.post(`${URL}/users/login.php`, rData);
   return data;
