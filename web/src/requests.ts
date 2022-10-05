@@ -4,9 +4,14 @@ import { API_URL } from './static';
 
 const URL = API_URL();
 
+// Get requests list.
 export const initReq = async () => axios.get(`${URL}/init.php`);
 export const userExists = async () => {
   const response = await axios.get(`${URL}/users/userexists.php`);
+  return response.data;
+};
+export const fetchProjects = async () => {
+  const response = await axios.get(`${URL}/projects/index.php`);
   return response.data;
 };
 

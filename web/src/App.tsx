@@ -4,22 +4,23 @@ import { useQuery } from 'react-query';
 import { initReq, userExists } from './requests';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import LoadingScreen from './Components/LoadingScreen/LoadingScreen';
+import Navigation from './Components/Navigation/Navigation';
 import Register from './Containers/Register/Register';
 import Login from './Containers/Login/Login';
-import Navigation from './Components/Navigation/Navigation';
+import Projects from './Containers/Projects/Projects';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [user, setUser] = useState(null);
   useEffect(() => { initReq(); }, [isLoggedIn, user]);
-  const { data, status, refetch } = useQuery('userExists', userExists);
+  const { data, status, refetch } = useQuery('userExists', userExists, {staleTime: Infinity});
   const navigate = useNavigate();
 
   useEffect(() => {
     if(data) {
       if(!data.exists) navigate('/register');
       else if(data.exists && !isLoggedIn) navigate('/login');
-      else navigate('/user');
+      else navigate('/projects');
     }
   }, [data, user, isLoggedIn])
 
@@ -33,7 +34,7 @@ function App() {
         <Route path='/login' element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
         <Route path='/register' element={<Register refetch={refetch} />} />
         <Route path='/user' element={<></>} />
-        <Route path='/projects' element={<></>} />
+        <Route path='/projects' element={<Projects />} />
       </Routes>
     </div>
   );
