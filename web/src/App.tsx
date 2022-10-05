@@ -1,7 +1,8 @@
 import react, { useEffect, useState } from 'react'
 import './Scss/App.scss'
 import { useQuery } from 'react-query';
-import { initReq, userExists, User } from './requests';
+import { initReq, userExists } from './requests';
+import { User } from './interface';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import LoadingScreen from './Components/LoadingScreen/LoadingScreen';
 import Navigation from './Components/Navigation/Navigation';

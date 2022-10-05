@@ -1,6 +1,6 @@
 import React, { useEffect, Dispatch } from 'react';
 import { MdOutlineScheduleSend, MdOutlineSend } from 'react-icons/md';
-import { User } from '../../requests';
+import { User } from '../../interface';
 import Cookies from 'cookies-js';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';

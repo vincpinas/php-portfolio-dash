@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from 'react-query';
+import { useMutation } from 'react-query';
 import axios from 'axios';
 import { API_URL } from './static';
 
@@ -14,19 +14,12 @@ export const fetchProjects = async () => {
   const response = await axios.get(`${URL}/projects/index.php`);
   return response.data;
 };
-
-// Login request and consumer and user interface.
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  start_career: string;
-  completed_projects: number;
-  satisfied_customers: number;
+export const deleteProject = async (id: number) => {
+  const response = await axios.delete(`${URL}/projects/delete.php?id=${id}`);
+  return response.data;
 }
 
+// Login request and consumer.
 export const login = async (rData: URLSearchParams) => {
   const { data } = await axios.post(`${URL}/users/login.php`, rData);
   return data;

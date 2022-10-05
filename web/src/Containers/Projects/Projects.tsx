@@ -4,12 +4,16 @@ import { useQuery } from 'react-query';
 import { fetchProjects } from '../../requests';
 import ProjectsPopup from '../../Components/ProjectPopup/ProjectsPopup';
 import './Projects.scss';
+import ProjectRow from '../../Components/ProjectsRow/ProjectRow';
+import { Project } from '../../interface';
+import ProjectsHeader from '../../Components/ProjectsHeader/ProjectsHeader';
 
 function Projects() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<Project[]|[]>([]);
   const [popupActive, setPopupActive] = useState(false);
-  const { data } = useQuery('fetchProjects', fetchProjects, {
+  const { data, refetch } = useQuery('fetchProjects', fetchProjects, {
     staleTime: 9000,
+    refetchOnWindowFocus: true,
   });
   useEffect(() => {
     setProjects(data);
@@ -17,14 +21,21 @@ function Projects() {
 
   return (
     <>
-      {popupActive ? <ProjectsPopup setPopupActive={setPopupActive} /> : null}
+      {popupActive ? <ProjectsPopup setPopupActive={setPopupActive} refetch={refetch} /> : null}
       <div id='projectsContainer'>
         <h2>Projects</h2>
         <h4>Manage all your projects in the list down here.</h4>
         <button className='projectButton open' onClick={() => setPopupActive(true)}>
           <AiOutlinePlusCircle /> Add project
         </button>
-        <div className='projectsWrapper'></div>
+        <ProjectsHeader refetch={refetch} />
+        <div className='projectsWrapper'>
+          { projects.length > 0 ?
+          projects.map((row: Project) => {
+            return (<ProjectRow project={row} key={`project-row-id:${row.id}`} refetch={refetch} />)
+          }) : <h4 style={{textAlign:"center"}}>There are currently no projects, <br /> click bottom left to make one.</h4>
+          }
+        </div>
       </div>
     </>
   )

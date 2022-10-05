@@ -12,6 +12,8 @@
 
   .projectsWrapper {
     width: 100%;
-
+    height: fit-content;
+    display: grid;
+    margin-top: 2rem;
   }
 }

@@ -1,0 +1,30 @@
+@import '../../Scss/Variables';
+@import '../../Scss/Mixins';
+
+.projectRow {
+  width: 100%;
+  padding: 1.25rem 0.8rem;
+  border: 2px solid $background;
+  display: flex;
+  @include font--primary(500);
+  border: 1px solid $background;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: $border-radius--primary;
+  transition: $transition-fast;
+  
+  button {
+    background: none;
+    border: none;
+    font-size: 1.7em;
+    color: $text-primary;
+
+    &:hover {
+      color: $special-primary;
+    }
+  }
+
+  &:hover {
+    border: 1px solid $special-primary;
+  }
+}
