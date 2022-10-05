@@ -56,7 +56,9 @@ function Register({ refetch }: RegProps) {
         register.append(key, values[key])
       });
       reqReg(register);
-      refetch();
+      setTimeout(() => {
+        refetch();
+      }, 200)
     },
   });
 
