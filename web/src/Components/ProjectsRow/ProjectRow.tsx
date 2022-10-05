@@ -27,10 +27,7 @@ function ProjectRow({ project, refetch }: ProjectRowProps) {
     return string.substring(0, 20) + "..."
   }
   const useDeleteProject = () => {
-    deleteProject(id)
-    setTimeout(() => {
-      refetch()
-    }, 400)
+    deleteProject(id).then(() => refetch())
   }
 
 
