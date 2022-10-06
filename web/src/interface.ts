@@ -34,3 +34,8 @@ export interface ParsedProject {
   skills: string[];
   categories: string[];
 }
+
+export interface Login {
+  email: string;
+  password: string;
+}

@@ -20,6 +20,8 @@
 
   &.cancel {
     padding: 0.6rem 1.2rem;
+    margin-left: auto;
+    margin-bottom: 2rem;
   }
 
   &:hover {
@@ -45,6 +47,11 @@
   .popupWindow {
     padding: 2rem;
     background-color: $background-secondary;
+    border-radius: $border-radius--primary;
+
+    #popupFormWrapper {
+      border-radius: $border-radius--primary;
+    }
 
 
     span {

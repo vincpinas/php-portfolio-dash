@@ -20,7 +20,7 @@ export const deleteProject = async (id: number) => {
 }
 
 // Login request and consumer.
-export const login = async (rData: URLSearchParams) => {
+export const login = async (rData: URLSearchParams|FormData) => {
   const { data } = await axios.post(`${URL}/users/login.php`, rData);
   return data;
 }
@@ -29,7 +29,7 @@ export const useLogin = (onSucces?: Function) => {
 }
 
 // Register request and consumer.
-export const register = async (rData: URLSearchParams) => {
+export const register = async (rData: URLSearchParams|FormData) => {
   const { data } = await axios.post(`${URL}/users/register.php`, rData);
   return data;
 }
@@ -37,7 +37,7 @@ export const useRegister = () => {
   return useMutation(register);
 }
 
-export const createProject = async (rData: URLSearchParams) => {
+export const createProject = async (rData: URLSearchParams|FormData) => {
   const { data } = await axios.post(`${URL}/projects/create.php`, rData);
   return data;
 }

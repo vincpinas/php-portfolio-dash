@@ -1,0 +1,51 @@
+@import '../../Scss//Variables';
+@import '../../Scss/Mixins.scss';
+
+.toolTipWrapper {
+  position: relative;
+  z-index: $index-5;
+
+  /* Tooltip text */
+  .tooltip {
+    @include font--primary(300);
+    font-size: 0.75rem;
+    line-height: 14px;
+    visibility: hidden;
+    width: 8rem;
+    background-color: $background-alternate;
+    color: $text-primary;
+    text-align: center;
+    padding: 8px 6px;
+    border-radius: $border-radius--primary;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: $index-5;
+    top: 0%;
+    left: 400%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* Tooltip arrow */
+  .tooltip::after {
+    transform: rotate(90deg) !important;
+    content: "";
+    position: absolute;
+    bottom: 40%;
+    left: 0;
+    margin-left: -10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $background-alternate transparent transparent transparent;
+  }
+
+  /* Show the tooltip text when you mouse over the tooltip container */
+  &:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+}

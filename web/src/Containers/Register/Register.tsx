@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MdOutlineScheduleSend, MdOutlineSend } from 'react-icons/md';
 import { useFormik } from 'formik';
+import { lAB, lAF } from '../../helpers';
 import * as Yup from 'yup';
 import { useRegister } from '../../requests';
 import './Register.scss';
@@ -12,17 +13,7 @@ interface RegProps {
 function Register({ refetch }: RegProps) {
   const { mutate: reqReg, isLoading } = useRegister();
 
-  const lAF = (e: any) => {
-    const parent = e.target.parentElement;
-    parent.classList.remove('iF-label'); parent.classList.remove('iFe-label');
-    if (e.target.value) parent.classList.add('iF-label');
-    else parent.classList.add('iFe-label');
-  }
-  const lAB = (e: any) => {
-    const parent = e.target.parentElement;
-    parent.classList.remove('iF-label'); parent.classList.remove('iFe-label');
-  }
-  const lOC = (e: any) => {
+  const lOC = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
     formik.handleChange(e);
     lAF(e);
   }
@@ -66,7 +57,7 @@ function Register({ refetch }: RegProps) {
     <div id='registerContainer'>
       <h3>Please fill out some information about <br /> the owner of this portfolio</h3>
       <div id='registerFormWrapper'>
-        <form id='registerForm' onSubmit={formik.handleSubmit}>
+        <form className='formikForm' onSubmit={formik.handleSubmit}>
           <div className="inputRow">
             <label htmlFor='name' className={formik.errors.name ? 'iFerr-label' : ''}>
               Name*

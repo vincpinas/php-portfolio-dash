@@ -23,8 +23,9 @@ function ProjectRow({ project, refetch }: ProjectRowProps) {
   const links = typeof parsedProject.links === "object" ? parsedProject.links : JSON.parse(project.links)
   const skills = typeof parsedProject.skills === "object" ? parsedProject.skills : JSON.parse(project.skills)
   const categories = typeof parsedProject.categories === "object" ? parsedProject.categories : JSON.parse(project.categories)
-  const sString = (string: string) => {
-    return string.substring(0, 20) + "..."
+  const sString = (string: string, l: number = 20) => {
+    if(string.length > 20) return string.substring(0, 20) + "..."
+    else return string;
   }
   const useDeleteProject = () => {
     deleteProject(id).then(() => refetch())
@@ -41,8 +42,8 @@ function ProjectRow({ project, refetch }: ProjectRowProps) {
       <li>{status}</li>
       <li>{img_src}</li>
       <li>{sString(links.github)}, {sString(links.live)}</li>
-      <li>{skills[2]}</li>
-      <li>{categories}</li>
+      <li>[{skills.map((skill: string) => { return (`${skill}, `) })}]</li>
+      <li>[{categories.map((category: string) => { return (`${category}, `) })}]</li>
       <li><button onClick={useDeleteProject}><AiOutlineDelete /></button></li>
     </ul>
   )

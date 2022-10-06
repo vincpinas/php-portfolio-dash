@@ -15,5 +15,9 @@
     height: fit-content;
     display: grid;
     margin-top: 2rem;
+
+    &.noResults {
+      height: 100% !important;
+    }
   }
 }

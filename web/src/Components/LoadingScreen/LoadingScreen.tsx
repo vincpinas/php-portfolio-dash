@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './Loading.scss';
-import sheetarray from './SpritesheetData';
+import sheetarray, { Spritesheet } from './SpritesheetData';
 
 interface loadProps {
   text: string;
 }
 
 function LoadingScreen({ text }: loadProps) {
-  const random = (array: any[]) => {
+  const random = (array: Spritesheet[]) => {
     let temp = Math.floor(Math.random() * array.length);
     return array[temp];
   }

@@ -1,6 +1,7 @@
 import React, { useEffect, Dispatch } from 'react';
 import { MdOutlineScheduleSend, MdOutlineSend } from 'react-icons/md';
-import { User } from '../../interface';
+import { Login, User } from '../../interface';
+import { lAB, lAF } from '../../helpers';
 import Cookies from 'cookies-js';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -24,17 +25,7 @@ function Login({ setUser, setIsLoggedIn }: loginProps) {
     }
   }, [isSuccess]);
 
-  const lAF = (e: any) => {
-    const parent = e.target.parentElement;
-    parent.classList.remove('iF-label'); parent.classList.remove('iFe-label');
-    if (e.target.value) parent.classList.add('iF-label');
-    else parent.classList.add('iFe-label');
-  }
-  const lAB = (e: any) => {
-    const parent = e.target.parentElement;
-    parent.classList.remove('iF-label'); parent.classList.remove('iFe-label');
-  }
-  const lOC = (e: any) => {
+  const lOC = (e: React.InputHTMLAttributes<HTMLInputElement>) => {
     formik.handleChange(e);
     lAF(e);
   }
@@ -50,7 +41,7 @@ function Login({ setUser, setIsLoggedIn }: loginProps) {
     }),
     validateOnChange: false,
     validateOnBlur: true,
-    onSubmit: (values) => {
+    onSubmit: (values: Login) => {
       const login = new URLSearchParams();
       login.append('email', values.email);
       login.append('password', values.password);
@@ -62,7 +53,7 @@ function Login({ setUser, setIsLoggedIn }: loginProps) {
   return (
     <div id='loginContainer'>
       <div id='loginFormWrapper'>
-        <form id='loginForm' onSubmit={formik.handleSubmit}>
+        <form className='formikForm' onSubmit={formik.handleSubmit}>
           <label htmlFor='email' className={formik.errors.email ? 'iFerr-label' : ''}>
             Email*
             <input

@@ -7,6 +7,12 @@
   font-style: $style;
 }
 
+@mixin font--secondary($weight: 300, $style: normal) {
+  font-family: $font--secondary;
+  font-weight: $weight;
+  font-style: $style;
+}
+
 @mixin font-size($size) {
   font-size: #{$size}px;
 }
