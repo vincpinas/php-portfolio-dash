@@ -209,6 +209,32 @@ html,
         color: $color-red;
     }
 
+    .inputRow {
+        display: flex;
+        width: 100%;
+
+        .actionWrapper {
+            width: fit-content;
+            margin-left: auto;
+            margin-top: 0;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            div {
+                font-size: 1.4em;
+                transition: all $transition-normal;
+
+                &:hover {
+                    color: $special-primary;
+                }
+
+                &:not(:first-child) {
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
+
     label {
         width: 100%;
         display: flex;
@@ -223,10 +249,9 @@ html,
             }
         }
 
-        &:first-child {
-            margin-right: 6.5rem;
+        &:not(:first-child) {
+            margin-left: 6.5rem;
         }
-
 
         input {
             background: none;

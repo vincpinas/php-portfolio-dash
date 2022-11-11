@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { MdOutlineScheduleSend, MdOutlineSend } from 'react-icons/md';
+import { MdOutlineScheduleSend, MdOutlineSend, MdContentPaste } from 'react-icons/md';
+import { AiOutlinePaperClip } from 'react-icons/ai';
+import Tooltip from '../../Components/Tooltip/Tooltip';
 import { useFormik } from 'formik';
 import { lAB, lAF } from '../../helpers';
 import * as Yup from 'yup';
@@ -146,9 +148,19 @@ function Register({ refetch }: RegProps) {
               {formik.errors.satisfied_customers && <span className='errorMessage'>{formik.errors.satisfied_customers}</span>}
             </label>
           </div>
-          <button type='submit' disabled={isLoading}>
-            {isLoading ? <MdOutlineScheduleSend /> : <MdOutlineSend />}
-          </button>
+          <div className='inputRow'>
+            <button type='submit' disabled={isLoading}>
+              {isLoading ? <MdOutlineScheduleSend /> : <MdOutlineSend />}
+            </button>
+            <div className='actionWrapper'>
+              <Tooltip text='Copy form'>
+                <AiOutlinePaperClip onClick={() => navigator.clipboard.writeText(JSON.stringify(formik.values))} />
+              </Tooltip>
+              <Tooltip text='Paste form (broken)'>
+                <MdContentPaste onClick={async() => formik.values = JSON.parse(await navigator.clipboard.readText())} />
+              </Tooltip>
+            </div>
+          </div>
         </form>
       </div>
     </div>

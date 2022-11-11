@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     $img_src = trim($_POST['img_src']);
     $description = trim($_POST['description']);
     $learned = trim($_POST['learned']);
+    $team = trim($_POST['team']);
     $links = trim($_POST['links']);
     $skills = trim($_POST['skills']);
     $categories = trim($_POST['categories']);
@@ -49,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     $updated_at = date("Y/m/d h:i:s");
 
     try {
-      $insert_query = "INSERT INTO `projects` (`title`,`introduction`,`status`,`img_src`,`description`,`learned`,`links`,`skills`,`categories`,`created_at`,`updated_at`) 
-      VALUES (:title,:introduction,:status,:img_src,:description,:learned,:links,:skills,:categories,:created_at,:updated_at)";
+      $insert_query = "INSERT INTO `projects` (`title`,`introduction`,`status`,`img_src`,`description`,`learned`,`team`,`links`,`skills`,`categories`,`created_at`,`updated_at`) 
+      VALUES (:title,:introduction,:status,:img_src,:description,:learned,:team,:links,:skills,:categories,:created_at,:updated_at)";
 
       $insert_stmt = $conn->prepare($insert_query);
 
@@ -60,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
       $insert_stmt->bindValue(':img_src', $img_src, PDO::PARAM_STR);
       $insert_stmt->bindValue(':description', $description, PDO::PARAM_STR);
       $insert_stmt->bindValue(':learned', $learned, PDO::PARAM_STR);
+      $insert_stmt->bindValue(':team', $team, PDO::PARAM_STR);
       $insert_stmt->bindValue(':links', $links, PDO::PARAM_STR);
       $insert_stmt->bindValue(':skills', $skills, PDO::PARAM_STR);
       $insert_stmt->bindValue(':categories', $categories, PDO::PARAM_STR);

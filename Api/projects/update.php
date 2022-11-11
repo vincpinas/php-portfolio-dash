@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
       'img_src' => trim($_POST['img_src']),
       'description' => trim($_POST['description']),
       'learned' => trim($_POST['learned']),
+      'team' => trim($_POST['team']),
       'links' => trim($_POST['links']),
       'skills' => trim($_POST['skills']),
       'categories' => trim($_POST['categories']),

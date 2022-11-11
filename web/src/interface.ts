@@ -35,7 +35,7 @@ export interface ParsedProject {
   categories: string[];
 }
 
-export interface Login {
+export interface LoginData {
   email: string;
   password: string;
 }
