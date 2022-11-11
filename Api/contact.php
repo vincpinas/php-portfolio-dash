@@ -19,12 +19,11 @@ $returnData = [];
 
 if (isset($_POST['email'])) {
     $to = "30472@ma-web.nl";
-    $subject = "Email from portfolio: " . $_POST['firstname'] . $_POST['q_type'];
+    $subject = "Email from portfolio: " . $_POST['firstname'] . ", Question: " . $_POST['q_type'];
     $message = $_POST['message'] . "\r\n\r\n" . "Sender: " . $_POST['name'] . $_POST['lastname'] . "\r\n" . "Email: " . $_POST['email'] . "\r\n" . "Phone: " . $_POST['phone'];
     $headers = "From: 30472@ma-web.nl";
 
     if (mail($to, $subject, $message, $headers)) {
-        mail($to, $subject, $message, $headers);
         $mail_view = [
             'receiver' => $to,
             'subject' => $subject,
